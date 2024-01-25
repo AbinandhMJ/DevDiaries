@@ -13,95 +13,168 @@
     <!-- Page Title -->
     <title>DevDiaries - {% block title %} {% endblock %}</title>
 
-    <!-- Google Fonts -->
-
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-    <!-- Fontawesome -->
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
-        integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/classy-nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
 
     <!-- Optional CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
 </head>
 
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preload-content">
+            <div id="original-load"></div>
+        </div>
+    </div>
+    <!-- /Preloader -->
+
+    <!-- Header -->
+    <header class="header-area">
+        <!-- Topbar -->
+        <div class="top-header">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <!-- Breaking News Area -->
+                    <div class="col-12 col-sm-8">
+                        <div class="breaking-news-area">
+                            <div id="breakingNewsTicker" class="ticker">
+                                <ul>
+                                    <li><a href="#">I'm a Freelancer</a></li>
+                                    <li><a href="#">I'm a Developer</a></li>
+                                    <li><a href="#">I'm a Web Desginer</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Top Social Area -->
+                    <div class="col-12 col-sm-4">
+                        <div class="top-social-area">
+                            <a href="https://linkedin.com/in/abinandhmj" target="_blank" data-toggle="tooltip"
+                                data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin"
+                                    aria-hidden="true"></i></a>
+                            <a href="https://www.facebook.com/mcnandh" target="_blank" data-toggle="tooltip"
+                                data-placement="bottom" title="Facebook"><i class="fa fa-facebook"
+                                    aria-hidden="true"></i></a>
+                            <a href="https://twitter.com/AbinandhMJ" target="_blank" data-toggle="tooltip"
+                                data-placement="bottom" title="Twitter"><i class="fa fa-twitter"
+                                    aria-hidden="true"></i></a>
+                            <a href="https://www.instagram.com/iammcnandh" target="_blank" data-toggle="tooltip"
+                                data-placement="bottom" title="Instagram"><i class="fa fa-instagram"
+                                    aria-hidden="true"></i></a>
+                            <a href="mailto:abinandhmurukesan@gmail.com" target="_blank" data-toggle="tooltip"
+                                data-placement="bottom" title="Mail"><i class="fa fa-envelope  "
+                                    aria-hidden="true"></i></a>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- /Topbar End -->
+
+        <!-- Nav Area -->
+        <div class="original-nav-area" id="stickyNav">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-between">
+
+                        <!-- Main Logo-->
+                        <a href="#" class="logo-link" title="Your Logo">
+                            <img src="{% static 'img/mainlogo.png' %}" alt="Your Logo">
+                        </a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu" id="originalNav">
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="index.html">Blog</a></li>
+                                    <li><a href="#">Category</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+
+                                <!-- Search Form  -->
+                                <div id="search-wrapper">
+                                    <form action="#">
+                                        <input type="text" id="search" placeholder="Search something...">
+                                        <div id="close-icon"></div>
+                                        <input class="d-none" type="submit" value="">
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Nav End -->
+
+    </header>
+    <!-- /Header -->
     {% block template%}
 
     {% endblock %}
 
-    <!-- Footer section -->
-    <footer class="container-fluid mt-1 p-4">
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area text-center">
         <div class="container">
-            <div class="row pb-1">
-                <!-- Footer logo -->
-                <div class="col-lg-3 col-md-12">
-                    <!-- <img src="./img/logo.png" class="img-fluid" alt="Logo"> -->
-                </div>
+            <div class="row">
+                <div class="col-12">
 
-                <!-- footer links -->
-                <div class="col-lg-6 col-md-12">
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Categories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
-                    </ul>
-                </div>
 
-                <!-- footer social links -->
-                <div class="col-lg-3 col-md-12">
-                    <ul class="nav justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link active btn btn-light" href="#"><i class="fab fa-facebook-f"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active btn btn-light" href="#"><i class="fab fa-google"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active btn btn-light" href="#"><i class="fab fa-twitter"></i></a>
-                        </li>
-                    </ul>
-                </div>
+                    <!-- Footer Social Area -->
+                    <div class="footer-social-area mt-30">
+                        <a href="https://linkedin.com/in/abinandhmj" target="_blank" data-toggle="tooltip"
+                            data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin"
+                                aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/mcnandh" target="_blank" data-toggle="tooltip"
+                            data-placement="bottom" title="Facebook"><i class="fa fa-facebook"
+                                aria-hidden="true"></i></a>
+                        <a href="https://twitter.com/AbinandhMJ" target="_blank" data-toggle="tooltip"
+                            data-placement="bottom" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/iammcnandh" target="_blank" data-toggle="tooltip"
+                            data-placement="bottom" title="Instagram"><i class="fa fa-instagram"
+                                aria-hidden="true"></i></a>
+                        <a href="mailto:abinandhmurukesan@gmail.com" target="_blank" data-toggle="tooltip"
+                            data-placement="bottom" title="Mail"><i class="fa fa-envelope  " aria-hidden="true"></i></a>
 
-                <hr class="w-100">
-
-            </div>
-
-            <hr class="w-100">
-
-            <!-- copyright text -->
-            <div class="row pt-2">
-                <div class="col-lg-12 text-center">
-                    <span>&copy; <a href="">DevDiaries</a> All Rights Reserved.</span>
+                    </div>
                 </div>
             </div>
         </div>
+        Copyright &copy;
+        <script>document.write(new Date().getFullYear());</script> All rights reserved | Developed by <a
+            href="https://abinandhmj.netlify.app/" target="_blank">Ab<span class="credits">!</span>nandh MJ</a>
+
     </footer>
+    <!-- ##### Footer Area End ##### -->
 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js'%}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <!-- Plugins js -->
+    <script src="{% static 'js/plugins.js'%}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js'%}"></script>
+
 </body>
 
 </html>
