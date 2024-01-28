@@ -8,7 +8,7 @@
 @font-face {
     font-family: 'helveticaneuebold';
     src: url('fonts/helvetica_neu_bold-webfont.woff2') format('woff2'),
-    url('fonts/helvetica_neu_bold-webfont.woff') format('woff');
+        url('fonts/helvetica_neu_bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -16,7 +16,7 @@
 @font-face {
     font-family: 'helveticaneuemedium';
     src: url('fonts/helveticaneue_medium-webfont.woff2') format('woff2'),
-    url('fonts/helveticaneue_medium-webfont.woff') format('woff');
+        url('fonts/helveticaneue_medium-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -69,6 +69,7 @@ a {
     font-size: 14px;
     font-family: $helvetica-medium;
     color: #4f4d4d;
+
     &:hover,
     &:focus {
         font-family: $helvetica-medium;
@@ -100,6 +101,7 @@ a {
     border-top-color: $bg-gray;
     @include animation(original 2400ms linear infinite);
     z-index: 999;
+
     &:before {
         content: "";
         position: absolute;
@@ -114,6 +116,7 @@ a {
         border-top-color: $bg-gray;
         @include animation(original 2700ms linear infinite);
     }
+
     &:after {
         content: "";
         position: absolute;
@@ -134,6 +137,7 @@ a {
     0% {
         @include transform(rotate(0deg));
     }
+
     100% {
         @include transform(rotate(360deg));
     }
@@ -143,6 +147,7 @@ a {
     0% {
         @include transform(rotate(0deg));
     }
+
     100% {
         @include transform(rotate(360deg));
     }
@@ -151,6 +156,7 @@ a {
 ul,
 ol {
     margin: 0;
+
     li {
         list-style: none;
     }
@@ -299,14 +305,17 @@ img {
     text-transform: uppercase;
     padding: 5px 10px;
     line-height: 1;
+
     &:hover {
         color: $hover-color;
         border-color: $hover-color;
     }
+
     @media #{$breakpoint-md} {
         bottom: 30px;
         right: 30px;
     }
+
     @media #{$breakpoint-xs} {
         bottom: 30px;
         right: 30px;
@@ -320,6 +329,7 @@ img {
 .background-overlay {
     position: relative;
     z-index: 2;
+
     &:after {
         position: absolute;
         z-index: -1;
@@ -348,6 +358,7 @@ img {
     font-family: $opensans-fonts;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
     color: $color-dark;
+
     &:hover,
     &:focus {
         font-family: $opensans-fonts;
@@ -364,53 +375,68 @@ img {
     width: 100%;
     z-index: 100;
     @include trans-duration(500ms);
+
     .top-header {
         height: 65px;
+
         @media #{$breakpoint-xs} {
             height: 90px;
         }
+
         @media #{$breakpoint-sm} {
             height: 70px;
         }
+
         .top-social-area {
             text-align: right;
+
             @media #{$breakpoint-xs} {
                 text-align: left;
             }
+
             a {
                 display: inline-block;
                 padding: 5px 15px;
                 color: $color-dark;
                 font-size: 13px;
+
                 &:hover,
                 &:focus {
                     color: $hover-color;
                 }
+
                 @media #{$breakpoint-md} {
                     padding: 5px 7px;
                 }
+
                 @media #{$breakpoint-xs} {
                     padding: 5px 7px;
                 }
+
                 @media #{$breakpoint-sm} {
                     padding: 5px 4px;
                 }
             }
         }
     }
+
     .logo-area {
         height: 170px;
         border-top: 1px solid #e1e1e1;
         border-bottom: 1px solid #e1e1e1;
+
         @media #{$breakpoint-xs} {
             height: 100px;
         }
     }
+
     .original-nav-area {
         height: 100px;
+
         @media #{$breakpoint-xs} {
             height: 70px;
         }
+
         .subscribe-btn {
             a {
                 display: inline-block;
@@ -423,31 +449,38 @@ img {
                 text-transform: uppercase;
                 line-height: 40px;
                 padding: 0;
+
                 &:hover,
                 &:focus {
                     background-color: $hover-color;
                 }
             }
         }
+
         .classynav ul li a {
             text-transform: uppercase;
             color: #4f4d4d;
+
             &:focus,
             &:hover {
                 color: $color-dark;
             }
         }
+
         .classy-nav-container {
             background-color: transparent;
         }
+
         .classy-navbar {
             height: 100px;
             padding: 0;
+
             @media #{$breakpoint-xs} {
                 height: 70px;
             }
         }
     }
+
     .is-sticky {
         .original-nav-area {
             background-color: $color-white;
@@ -460,6 +493,7 @@ img {
             left: 0;
             right: 0;
             z-index: 900;
+
             .classy-navbar {
                 height: 70px;
             }
@@ -473,16 +507,20 @@ img {
         text-align: left;
         position: relative;
         overflow: hidden;
+
         ul {
             width: 100%;
             position: relative;
+
             li {
                 display: none;
                 width: 100%;
+
                 a {
                     color: $color-dark;
                     font-size: 14px;
                     text-transform: uppercase;
+
                     &:hover {
                         color: $hover-color;
                     }
@@ -499,18 +537,23 @@ img {
 .subscribe-newsletter-area {
     .modal-content {
         border-radius: 0;
+
         .modal-body {
             padding: 70px;
+
             @media #{$breakpoint-xs} {
                 padding: 40px 30px;
             }
+
             .title {
                 font-size: 18px;
                 margin-bottom: 20px;
             }
+
             .newsletterForm {
                 position: relative;
                 z-index: 1;
+
                 input {
                     width: 100%;
                     height: 60px;
@@ -521,12 +564,15 @@ img {
                     font-style: italic;
                     margin-bottom: 15px;
                     padding: 0 30px;
+
                     &:focus {
                         border: 1px solid $color-dark;
                     }
                 }
+
                 button[type="submit"] {
                     background-color: $color-white;
+
                     &:hover {
                         background-color: $hover-color;
                         color: $color-white;
@@ -535,6 +581,7 @@ img {
             }
         }
     }
+
     .close {
         position: absolute;
         top: -30px;
@@ -544,6 +591,7 @@ img {
         height: 30px;
         color: $color-white;
         font-weight: 400;
+
         &:hover {
             color: $color-white;
         }
@@ -555,24 +603,31 @@ img {
 .hero-slides {
     position: relative;
     z-index: 1;
+
     .single-hero-slide {
         position: relative;
         z-index: 1;
         height: 670px;
+
         @media #{$breakpoint-lg} {
             height: 500px;
         }
+
         @media #{$breakpoint-md} {
             height: 450px;
         }
+
         @media #{$breakpoint-xs} {
             height: 250px;
         }
+
         .slide-content {
             display: none;
+
             .post-tag {
                 margin-bottom: 15px;
                 display: block;
+
                 a {
                     display: inline-block;
                     padding: 3px 10px;
@@ -584,6 +639,7 @@ img {
                     color: $color-white;
                 }
             }
+
             h2 {
                 a {
                     font-size: 40px;
@@ -594,12 +650,15 @@ img {
                     text-transform: uppercase;
                     color: $color-white;
                     margin-bottom: 0;
+
                     @media #{$breakpoint-lg} {
                         font-size: 30px;
                     }
+
                     @media #{$breakpoint-md} {
                         font-size: 24px;
                     }
+
                     @media #{$breakpoint-xs} {
                         font-size: 12px;
                         padding: 12px 10px 5px;
@@ -608,6 +667,7 @@ img {
             }
         }
     }
+
     .center {
         .single-hero-slide {
             .slide-content {
@@ -615,7 +675,9 @@ img {
             }
         }
     }
+
     .owl-nav {
+
         .owl-prev,
         .owl-next {
             background-color: #cbcbcb;
@@ -632,12 +694,14 @@ img {
             line-height: 42px;
             border-radius: 2px;
             @include trans-duration(500ms);
+
             &:hover,
             &:focus {
                 background-color: #0d0d0d;
                 color: $color-white;
             }
         }
+
         .owl-next {
             left: auto;
             right: 7%;
@@ -650,12 +714,15 @@ img {
 .single-blog-area {
     position: relative;
     z-index: 1;
+
     .single-blog-thumbnail {
         position: relative;
         z-index: 1;
+
         img {
             width: 100%;
         }
+
         .post-date {
             position: absolute;
             z-index: 10;
@@ -665,12 +732,14 @@ img {
             background-color: $color-white;
             padding: 20px 8px;
             text-align: center;
+
             a {
                 font-size: 24px;
                 text-transform: uppercase;
                 color: $color-dark;
                 line-height: 1;
                 font-family: $helvetica-medium;
+
                 span {
                     display: block;
                     font-family: $opensans-fonts;
@@ -680,6 +749,7 @@ img {
             }
         }
     }
+
     .single-blog-content {
         .line {
             background-color: #c8c8c8;
@@ -687,6 +757,7 @@ img {
             height: 2px;
             margin-bottom: 20px;
         }
+
         .post-tag {
             color: #a1a1a1;
             font-size: 11px;
@@ -694,33 +765,40 @@ img {
             letter-spacing: 3px;
             margin-bottom: 10px;
             display: block;
+
             &:hover,
             &:focus {
                 color: $color-dark;
             }
         }
+
         h4 {
             a {
                 display: inline-block;
                 color: $color-dark;
                 font-size: 24px;
                 margin-bottom: 30px;
+
                 &:hover,
                 &:focus {
                     color: $hover-color;
                 }
+
                 @media #{$breakpoint-lg} {
                     margin-bottom: 20px;
                 }
             }
         }
-        > p {
+
+        >p {
             line-height: 2;
             margin-bottom: 70px;
+
             @media #{$breakpoint-lg} {
                 margin-bottom: 30px;
             }
         }
+
         .post-meta {
             p {
                 font-size: 9px;
@@ -728,9 +806,11 @@ img {
                 margin-bottom: 0;
                 letter-spacing: 3px;
                 display: inline-block;
+
                 &:first-of-type {
                     margin-right: 30px;
                 }
+
                 a {
                     font-size: 9px;
                     text-transform: uppercase;
@@ -740,9 +820,10 @@ img {
             }
         }
     }
+
     &.blog-style-2 {
         .single-blog-content {
-            > p {
+            >p {
                 margin-bottom: 30px;
             }
         }
@@ -752,6 +833,7 @@ img {
 .single-catagory-area {
     position: relative;
     z-index: 1;
+
     .catagory-title {
         background-color: $color-dark;
         top: 50%;
@@ -761,14 +843,16 @@ img {
         position: absolute;
         z-index: 10;
         @include transform(translate(-50%,
-        -50%));
+                -50%));
         @include display-flex(flex);
         @include align-items(center);
         @include justify-content-center(center);
         @include trans-duration(500ms);
+
         &:hover {
             background-color: $hover-color;
         }
+
         a {
             font-size: 10px;
             color: $color-white;
@@ -785,12 +869,15 @@ img {
     top: 0;
     left: 50%;
     @include transform(translateX(-50%));
+
     @media #{$breakpoint-lg} {
         width: 100%;
     }
+
     @media #{$breakpoint-md} {
         width: 100%;
     }
+
     @media #{$breakpoint-xs} {
         width: 100%;
     }
@@ -800,6 +887,7 @@ img {
     @media #{$breakpoint-md} {
         margin-top: 100px;
     }
+
     @media #{$breakpoint-xs} {
         margin-top: 100px;
     }
@@ -809,9 +897,11 @@ img {
     position: relative;
     z-index: 1;
     margin-bottom: 60px;
+
     .search-form {
         position: relative;
         z-index: 1;
+
         input[type="search"] {
             width: 100%;
             height: 40px;
@@ -822,17 +912,21 @@ img {
             font-family: $opensans-fonts;
             color: #bbbec1;
             @include trans-duration(500ms);
+
             &:focus {
                 border-bottom: 1px solid $color-dark;
             }
         }
+
         input[type="submit"] {
             display: none;
         }
     }
+
     .newsletterForm {
         position: relative;
         z-index: 1;
+
         input {
             width: 100%;
             height: 40px;
@@ -844,59 +938,73 @@ img {
             color: #b2b2b2;
             margin-bottom: 15px;
             padding: 0 25px;
+
             &:focus {
                 border: 1px solid $color-dark;
             }
         }
+
         button[type="submit"] {
             background-color: $color-white;
             @include trans-duration(500ms);
+
             &:hover {
                 background-color: $hover-color;
             }
         }
     }
+
     .title {
         font-size: 18px;
         margin-bottom: 52px;
+
         &.subscribe-title {
             margin-bottom: 20px;
         }
     }
+
     .single-blog-post {
         margin-bottom: 25px;
+
         .post-thumbnail {
             @include flex(0 0 115px);
             min-width: 115px;
             padding-right: 15px;
         }
+
         .post-content {
             .post-tag {
                 color: #a1a1a1;
                 font-size: 11px;
                 text-transform: uppercase;
                 margin-bottom: 10px;
+
                 &:hover,
                 &:focus {
                     color: $color-dark;
                 }
             }
+
             h4 {
                 margin-bottom: 10px;
                 line-height: 1;
+
                 .post-headline {
                     font-size: 16px;
                     color: $color-dark;
                 }
             }
+
             .post-meta {
                 p {
                     margin-bottom: 0;
+
                     a {
                         font-size: 11px;
                         color: #878787;
                         font-family: $opensans-fonts;
                         text-transform: uppercase;
+
                         &:hover,
                         &:focus {
                             color: $color-dark;
@@ -906,11 +1014,13 @@ img {
             }
         }
     }
+
     .tags {
         @include display-flex(flex);
         @include flex-wrap(wrap);
         margin-top: -5px;
         margin-left: -5px;
+
         a {
             display: block;
             padding: 0 35px;
@@ -920,15 +1030,18 @@ img {
             height: 45px;
             line-height: 43px;
             margin: 5px;
+
             &:hover,
             &:focus {
                 border: 1px solid $hover-color;
                 color: $color-white;
                 background-color: $hover-color;
             }
+
             @media #{$breakpoint-lg} {
                 padding: 0 20px;
             }
+
             @media #{$breakpoint-md} {
                 padding: 0 15px;
             }
@@ -940,18 +1053,22 @@ img {
     position: relative;
     z-index: 1;
     border-top: 1px solid #dcdcdc;
+
     .insta-title {
         text-align: center;
+
         h5 {
             margin-bottom: 0;
             padding: 40px 0;
             font-size: 18px;
         }
     }
+
     .single-insta-feed {
         position: relative;
         z-index: 1;
         clear: both;
+
         .hover-effects {
             a {
                 display: block;
@@ -968,6 +1085,7 @@ img {
                 visibility: hidden;
             }
         }
+
         &:hover .hover-effects a,
         &:focus .hover-effects a {
             opacity: 1;
@@ -980,6 +1098,7 @@ img {
     position: relative;
     z-index: 1;
     height: 210px;
+
     .breadcumb-content {
         h2 {
             padding: 10px 15px 0;
@@ -990,6 +1109,7 @@ img {
             display: inline-block;
             text-transform: uppercase;
             line-height: 1;
+
             @media #{$breakpoint-xs} {
                 font-size: 30px;
             }
@@ -1004,6 +1124,7 @@ img {
     border-top: 1px solid;
     border-bottom: 1px solid;
     border-color: #c5c5c5;
+
     .author-thumbnail {
         @include flex(0 0 132px);
         min-width: 132px;
@@ -1011,14 +1132,17 @@ img {
         width: 112px;
         height: 112px;
         border-radius: 50%;
+
         @media #{$breakpoint-xs} {
             @include flex(0 0 90px);
             min-width: 90px;
         }
+
         img {
             border-radius: 50%;
         }
     }
+
     .author-info {
         .line {
             background-color: #c8c8c8;
@@ -1026,6 +1150,7 @@ img {
             height: 2px;
             margin-bottom: 20px;
         }
+
         .author-role {
             color: #a1a1a1;
             font-size: 11px;
@@ -1034,6 +1159,7 @@ img {
             margin-bottom: 10px;
             display: block;
         }
+
         h4 {
             a {
                 display: inline-block;
@@ -1042,6 +1168,7 @@ img {
                 margin-bottom: 0;
             }
         }
+
         p {
             line-height: 2;
             margin-bottom: 0;
@@ -1059,29 +1186,36 @@ img {
 .comment_area {
     border-bottom: 1px solid #c5c5c5;
     padding-bottom: 40px;
+
     .title {
         margin-bottom: 50px;
     }
+
     .comment-content {
         @media #{$breakpoint-xs} {
             padding: 20px 15px;
         }
+
         .comment-author {
             @include flex(0 0 79px);
             min-width: 79px;
             margin-right: 55px;
             border-radius: 50%;
+
             @media #{$breakpoint-xs} {
                 @include flex(0 0 60px);
                 min-width: 60px;
                 margin-right: 15px;
             }
+
             img {
                 border-radius: 50%;
             }
         }
+
         .comment-meta {
             margin-bottom: 30px;
+
             .post-date {
                 color: #a1a1a1;
                 font-size: 11px;
@@ -1090,16 +1224,19 @@ img {
                 margin-bottom: 0;
                 display: block;
             }
+
             .post-author {
                 margin-bottom: 15px;
                 display: block;
             }
+
             p {
                 margin-bottom: 15px;
                 font-size: 14px;
                 font-family: $opensans-fonts;
                 line-height: 2;
             }
+
             .comment-reply {
                 font-size: 11px;
                 color: $color-dark;
@@ -1108,16 +1245,20 @@ img {
             }
         }
     }
+
     .single_comment_area {
         margin-bottom: 30px;
+
         &:last-of-type {
             margin-bottom: 0;
         }
     }
+
     .children {
         .single_comment_area {
             margin-left: 50px;
             margin-top: 30px;
+
             @media #{$breakpoint-xs} {
                 margin-left: 15px;
             }
@@ -1133,27 +1274,33 @@ img {
     position: relative;
     z-index: 1;
     background-attachment: fixed;
+
     .single-blog-area {
         .line {
             margin: 0 auto 15px;
             background-color: $color-white;
         }
+
         .post-tag {
             color: $color-white;
         }
+
         .post-headline {
             color: $color-white;
         }
+
         p {
             color: $color-white;
         }
     }
+
     .single-cool-facts-area {
         h2 {
             font-size: 72px;
             color: $color-white;
             line-height: 1;
         }
+
         p {
             margin-bottom: 0;
             font-size: 18px;
@@ -1171,6 +1318,7 @@ img {
         color: $heading-color;
         margin-bottom: 30px;
     }
+
     button {
         background-color: $color-white;
     }
@@ -1182,6 +1330,7 @@ img {
     position: relative;
     z-index: 1;
     margin-bottom: 30px;
+
     input,
     textarea {
         font-size: 12px;
@@ -1193,11 +1342,13 @@ img {
         border: none;
         border-bottom: 2px solid;
         border-color: $bg-gray;
+
         &:focus {
             outline: none;
             box-shadow: none;
         }
     }
+
     label {
         color: $text-color;
         font-style: italic;
@@ -1210,10 +1361,12 @@ img {
         transition: 0.5s ease all;
 
     }
+
     .bar {
         position: relative;
         display: block;
         width: 100%;
+
         &:before,
         &:after {
             content: '';
@@ -1224,13 +1377,16 @@ img {
             background-color: $hover-color;
             transition: 0.5s ease all;
         }
+
         &:before {
             left: 50%;
         }
+
         &:after {
             right: 50%;
         }
     }
+
     .highlight {
         position: absolute;
         height: 60%;
@@ -1240,6 +1396,7 @@ img {
         pointer-events: none;
         opacity: 0.5;
     }
+
     textarea {
         min-height: 90px;
     }
@@ -1247,24 +1404,24 @@ img {
 
 /* Form Active State */
 
-input:focus ~ label,
-textarea:focus ~ label,
-input:valid ~ label,
-textarea:valid ~ label {
+input:focus~label,
+textarea:focus~label,
+input:valid~label,
+textarea:valid~label {
     top: -15px;
     font-size: 12px;
     color: $hover-color;
 }
 
-input:focus ~ .bar:before,
-textarea:focus ~ .bar:before,
-input:focus ~ .bar:after,
-textarea:focus ~ .bar:after {
+input:focus~.bar:before,
+textarea:focus~.bar:before,
+input:focus~.bar:after,
+textarea:focus~.bar:after {
     width: 50%;
 }
 
-input:focus ~ .highlight,
-textarea:focus ~ .highlight {
+input:focus~.highlight,
+textarea:focus~.highlight {
     @include animation(inputHighlighter 0.3s ease);
 }
 
@@ -1274,6 +1431,7 @@ textarea:focus ~ .highlight {
     from {
         background-color: $hover-color;
     }
+
     to {
         width: 0;
         background-color: transparent;
@@ -1284,6 +1442,7 @@ textarea:focus ~ .highlight {
     from {
         background-color: $hover-color;
     }
+
     to {
         width: 0;
         background-color: transparent;
@@ -1294,6 +1453,7 @@ textarea:focus ~ .highlight {
     from {
         background-color: $hover-color;
     }
+
     to {
         width: 0;
         background-color: transparent;
@@ -1303,15 +1463,19 @@ textarea:focus ~ .highlight {
 .map-area {
     position: relative;
     z-index: 1;
+
     #googleMap {
         width: 100%;
         height: 690px;
+
         @media #{$breakpoint-lg} {
             height: 500px;
         }
+
         @media #{$breakpoint-md} {
             height: 450px;
         }
+
         @media #{$breakpoint-xs} {
             height: 400px;
         }
@@ -1325,36 +1489,45 @@ textarea:focus ~ .highlight {
     position: relative;
     right: 7px;
     margin-left: 50px;
+
     @media #{$breakpoint-lg} {
         margin-left: 15px;
     }
+
     @media #{$breakpoint-md} {
         margin-left: 0;
     }
+
     @media #{$breakpoint-xs} {
         margin-left: 0;
     }
+
     @media #{$breakpoint-md} {
         margin-top: 15px;
         padding-left: 1em;
     }
+
     @media #{$breakpoint-xs} {
         margin-top: 15px;
         padding-left: 1em;
     }
+
     &.search-expanded {
         #close-icon {
             &:before {
                 @include animation(cross-1-in 0.25s linear 0s forwards);
             }
+
             &:after {
                 @include animation(cross-2-in 0.25s linear 0.2s forwards);
             }
         }
+
         &:after {
             @include animation(lens-out 0.5s linear 1 forwards);
         }
     }
+
     &:after {
         position: absolute;
         bottom: 3px;
@@ -1368,6 +1541,7 @@ textarea:focus ~ .highlight {
         transform-origin: 0 50%;
         @include animation(lens-in 0.6s linear 0.9s forwards);
     }
+
     #search {
         background: none;
         border: 2px solid;
@@ -1378,20 +1552,25 @@ textarea:focus ~ .highlight {
         width: 0;
         transition: all 0.3s 0.6s;
         font-size: 12px;
+
         &::-webkit-input-placeholder {
             color: rgba(0, 0, 0, 0.6)
         }
+
         &:focus {
             width: 270px;
             padding: 7px 15px;
+
             @media #{$breakpoint-lg} {
                 width: 170px;
             }
+
             @media #{$breakpoint-xs} {
                 width: 200px;
             }
         }
     }
+
     #close-icon {
         cursor: pointer;
         position: absolute;
@@ -1402,15 +1581,20 @@ textarea:focus ~ .highlight {
         @include transform(translateY(-1px));
         transition: 0.2s all;
         display: none;
+
         &[style*="display: block"] {
             color: red;
+
             &:before {
                 @include transform(rotate(45deg) scaleX(1) translateY(10px));
             }
+
             &:after {
                 @include transform(rotate(-45deg) scaleX(1) translateY(-10px));
             }
-        } // cross
+        }
+
+        // cross
         &:before,
         &:after {
             display: block;
@@ -1421,12 +1605,15 @@ textarea:focus ~ .highlight {
             background-color: $text-color;
             transform-origin: 100% 50%;
         }
+
         &:before {
             @include transform(rotate(45deg) scaleX(0) translateY(10px));
         }
+
         &:after {
             @include transform(rotate(-45deg) scaleX(0) translateY(-10px));
         }
+
         &.closing {
             &:before {
                 @include animation(cross-1-out 0.25s linear 0s forwards);
@@ -1444,9 +1631,11 @@ textarea:focus ~ .highlight {
     0% {
         @include transform(rotate(45deg) scaleX(1));
     }
+
     30% {
         @include transform(rotate(45deg) scaleX(1.4));
     }
+
     100% {
         @include transform(rotate(45deg) scaleX(0));
     }
@@ -1456,9 +1645,11 @@ textarea:focus ~ .highlight {
     0% {
         @include transform(rotate(45deg) scaleX(1));
     }
+
     30% {
         @include transform(rotate(45deg) scaleX(1.4));
     }
+
     100% {
         @include transform(rotate(45deg) scaleX(0));
     }
@@ -1468,9 +1659,11 @@ textarea:focus ~ .highlight {
     0% {
         @include transform(rotate(45deg) scaleX(0));
     }
+
     30% {
         @include transform(rotate(45deg) scaleX(1.4));
     }
+
     100% {
         @include transform(rotate(45deg) scaleX(1));
     }
@@ -1480,9 +1673,11 @@ textarea:focus ~ .highlight {
     0% {
         @include transform(rotate(45deg) scaleX(0));
     }
+
     30% {
         @include transform(rotate(45deg) scaleX(1.4));
     }
+
     100% {
         @include transform(rotate(45deg) scaleX(1));
     }
@@ -1492,9 +1687,11 @@ textarea:focus ~ .highlight {
     0% {
         @include transform(rotate(45deg) scaleX(0) translateY(10px));
     }
+
     70% {
         @include transform(rotate(45deg) scaleX(1.2) translateY(10px));
     }
+
     100% {
         @include transform(rotate(45deg) scaleX(1) translateY(10px));
     }
@@ -1505,9 +1702,11 @@ textarea:focus ~ .highlight {
     0% {
         @include transform(rotate(45deg) scaleX(0) translateY(10px));
     }
+
     70% {
         @include transform(rotate(45deg) scaleX(1.2) translateY(10px));
     }
+
     100% {
         @include transform(rotate(45deg) scaleX(1) translateY(10px));
     }
@@ -1517,9 +1716,11 @@ textarea:focus ~ .highlight {
     0% {
         @include transform(rotate(-45deg) scaleX(0) translateY(-10px));
     }
+
     70% {
         @include transform(rotate(-45deg) scaleX(1.2) translateY(-10px));
     }
+
     100% {
         @include transform(rotate(-45deg) scaleX(1) translateY(-10px));
     }
@@ -1530,9 +1731,11 @@ textarea:focus ~ .highlight {
     0% {
         @include transform(rotate(-45deg) scaleX(0) translateY(-10px));
     }
+
     70% {
         @include transform(rotate(-45deg) scaleX(1.2) translateY(-10px));
     }
+
     100% {
         @include transform(rotate(-45deg) scaleX(1) translateY(-10px));
     }
@@ -1542,6 +1745,7 @@ textarea:focus ~ .highlight {
     0% {
         @include transform(rotate(45deg) scaleX(1) translateY(10px));
     }
+
     100% {
         @include transform(rotate(45deg) scaleX(0) translateY(10px));
     }
@@ -1551,6 +1755,7 @@ textarea:focus ~ .highlight {
     0% {
         @include transform(rotate(45deg) scaleX(1) translateY(10px));
     }
+
     100% {
         @include transform(rotate(45deg) scaleX(0) translateY(10px));
     }
@@ -1560,6 +1765,7 @@ textarea:focus ~ .highlight {
     0% {
         @include transform(rotate(-45deg) scaleX(1) translateY(-10px));
     }
+
     100% {
         @include transform(rotate(-45deg) scaleX(0) translateY(-10px));
     }
@@ -1569,6 +1775,7 @@ textarea:focus ~ .highlight {
     0% {
         @include transform(rotate(-45deg) scaleX(1) translateY(-10px));
     }
+
     100% {
         @include transform(rotate(-45deg) scaleX(0) translateY(-10px));
     }
@@ -1577,9 +1784,17 @@ textarea:focus ~ .highlight {
 /* Footer Area CSS */
 
 .footer-area {
-    padding: 60px 0;
     position: relative;
     z-index: 1;
+
+    footer a {
+        color: #5a00c3;
+    }
+
+    footer {
+        padding-top: 25%;
+    }
+
     .footer-social-area {
         a {
             display: inline-block;
@@ -1588,9 +1803,11 @@ textarea:focus ~ .highlight {
             font-size: 13px;
         }
     }
+
     .classynav ul li a {
         text-transform: uppercase;
         color: #4f4d4d;
+
         &:focus,
         &:hover {
             color: $color-dark;
@@ -1601,29 +1818,36 @@ textarea:focus ~ .highlight {
 .coming-soon-area {
     position: relative;
     z-index: 1;
+
     #breakingNewsTicker.ticker ul li a {
         color: $color-white;
     }
+
     .header-area .top-header .top-social-area a {
         color: $color-white;
     }
+
     .header-area .logo-area {
         height: auto;
         padding: 130px 0 100px;
         border-top: 1px solid #999da4;
         border-bottom: none;
+
         @media #{$breakpoint-xs} {
             padding: 80px 0 50px 0;
         }
     }
+
     .coming-soon-timer {
         border-bottom: 1px solid #999da4;
         position: relative;
         z-index: 1;
+
         .coming-soon-content {
             position: relative;
             z-index: 1;
         }
+
         p {
             font-size: 14px;
             margin-bottom: 0;
@@ -1635,47 +1859,56 @@ textarea:focus ~ .highlight {
             position: absolute;
             top: 2px;
             z-index: 10;
+
             @media #{$breakpoint-xs} {
                 font-size: 12px;
                 letter-spacing: 1px;
             }
         }
+
         #clock {
             padding: 100px 0;
             color: $color-white;
             font-size: 72px;
             display: inline-block;
             line-height: 1;
+
             @media #{$breakpoint-xs} {
                 font-size: 30px;
             }
+
             span {
                 color: $color-white;
                 font-size: 18px;
                 display: block;
                 margin-bottom: 0;
+
                 @media #{$breakpoint-xs} {
                     font-size: 14px;
                 }
             }
         }
     }
+
     .contact-form {
         h5 {
             color: $color-white;
         }
+
         .group input,
         .group textarea {
             border-color: #999da4;
             background-color: transparent;
             color: $color-white;
         }
+
         .group {
             label {
                 color: $color-white;
             }
         }
     }
+
     .sidebar-widget-area .title {
         color: $color-white;
     }
@@ -1684,15 +1917,18 @@ textarea:focus ~ .highlight {
 .sonar-wrapper {
     position: relative;
     z-index: 0;
+
     .sonar-emitter {
         position: relative;
         margin: 0 auto;
         width: 35%;
         height: 20px;
         background-color: transparent;
+
         @media #{$breakpoint-xs} {
             width: 60%;
         }
+
         .sonar-wave {
             position: absolute;
             top: 0;
@@ -1714,6 +1950,7 @@ textarea:focus ~ .highlight {
     0% {
         opacity: 0.3;
     }
+
     100% {
         @include transform(scale(1.7));
         opacity: 0;
