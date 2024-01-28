@@ -266,7 +266,7 @@ img {
 }
 
 .section-padding-100 {
-	padding: 100px 0;
+	padding: 100px 0 0;
 }
 
 .section-padding-50 {
@@ -532,6 +532,13 @@ span .credits {
 
 .header-area .is-sticky .original-nav-area .classy-navbar {
 	height: 70px;
+}
+
+.header-area .original-nav-area .classynav ul li a.login {
+	font-weight: lighter;
+	color: #666666;
+	font-size: 12px;
+	letter-spacing: 2px;
 }
 
 #breakingNewsTicker.ticker {
@@ -1887,9 +1894,16 @@ textarea:focus~.highlight {
 
 /* Footer Area CSS */
 .footer-area {
-	padding: 60px 0;
 	position: relative;
 	z-index: 1;
+}
+
+footer {
+	padding-top: 25%;
+}
+
+footer a {
+	color: #5a00c3;
 }
 
 .footer-area .footer-social-area a {
@@ -2056,6 +2070,23 @@ textarea:focus~.highlight {
 		transform: scale(1.7);
 		opacity: 0;
 	}
+}
+
+/* Add this CSS for the sticky header */
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+	background-color: #fff;
+	/* Adjust the background color as needed */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Add this CSS for the space created when the header becomes sticky */
+.sticky+.content {
+	padding-top: 70px;
+	/* Adjust the padding based on your header's height */
 }
 
 /* The End */
