@@ -6,7 +6,7 @@ from .views import (
     category_detail,
     view_all_categories,
     register,
-    user_login,  # Change import to user_login
+    user_login,
     dashboard,
     forgotpassword, logout_view
 )
