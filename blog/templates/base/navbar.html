@@ -3,41 +3,50 @@
 <header class="navigation fixed-top">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-white">
-            <a class="navbar-brand order-1" href="index.html">
+            <a class="navbar-brand order-1" href="{% url 'homepage' %}">
                 <img class="img-fluid mainlogo" src="{% static 'images/logo.png' %}" alt="DevDiaries">
             </a>
             <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="{% url 'homepage' %}">Home</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="about-us.html">About us</a>
 
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="about-us.html">Categories</a>
-
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Tags & Categories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'view_all_categories' %}">Categories</a>
+                            <a class="dropdown-item" href="{% url 'tag_detail' tag_name='default_tag' %}">Tags</a>
+                        </div>
                     </li>
+                     
 
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             Sign in<i class="ti-angle-down ml-1"></i>
                         </a>
                         <div class="dropdown-menu">
 
-                            <a class="dropdown-item" href="about-me.html">Sign up</a>
+                            <a class="dropdown-item" href="{% url 'login' %}">Sign up</a>
 
-                            <a class="dropdown-item" href="about-us.html">Sign in</a>
+                            <a class="dropdown-item" class="button" id="form-open">Sign in</a>
 
                         </div>
-                    </li>
+
+                    </li> -->
 
                 </ul>
             </div>

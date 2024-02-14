@@ -10,10 +10,7 @@
     <!-- mobile responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="This is meta description">
-    <meta name="author" content="Themefisher">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'img/logo.png'%}" type="image/x-icon">
+    <meta name="author" content="Abinandh MJ">
 
     <!-- Page Title -->
     <title>DevDiaries - {% block title %} {% endblock %}</title>
@@ -47,12 +44,12 @@
     </div>
     <!-- /Preloader -->
     <!-- Back to top -->
-    <button onclick="topFunction()" id="backtotop" title="back2top">Top</button>
-    <!-- /Back to top -->
     {% include 'base/navbar.html' %}
     {% block template%}
 
     {% endblock %}
+    <button onclick="topFunction()" id="backtotop" title="back2top">Top</button>
+    <!-- /Back to top -->
     {% include 'base/footer.html' %}
 
     <!-- Optional JavaScript -->
@@ -76,9 +73,25 @@
     <!-- Main Script -->
     <script src="{% static 'js/script.js' %}"></script>
 
+    <!-- toast_notifications.html -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+        var toastList = toastElList.map(function(toastEl) {
+            return new bootstrap.Toast(toastEl);
+        });
+        
+        toastList.forEach(function(toast) {
+            toast.show();
+        });
+    });
+</script>
+
+
     <!-- Error Animation Script -->
     <script
         type='text/javascript'>document.addEventListener('DOMContentLoaded', function () { window.setTimeout(document.querySelector('svg').classList.add('animated'), 1000); })</script>
 </body>
+
 
 </html>

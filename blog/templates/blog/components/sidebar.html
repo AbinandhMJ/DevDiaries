@@ -52,41 +52,23 @@
         </div>
     </div>
 
-    <!-- authors -->
-    <div class="widget widget-author">
-        <h4 class="widget-title">Authors</h4>
-        <div class="media align-items-center">
-            <div class="mr-3">
-                <img class="widget-author-image" src="images/john-doe.jpg">
+        <!-- Authors -->
+        <div class="widget widget-author">
+            <h4 class="widget-title">Authors</h4>
+            {% for author in authors %}
+            <div class="media align-items-center">
+                <div class="mr-3">
+                    <img class="widget-author-image" src="{{ author.profile.image.url }}" alt="{{ author.username }}">
+                </div>
+                <div class="media-body">
+                    <h5 class="mb-1"><a class="post-title" href="#">{{ author.username }}</a></h5>
+                    <span>{{ author.profile.description }}</span>
+                    <small><a href="#" class="follow">Follow</a></small>
+                </div>
             </div>
-            <div class="media-body">
-                <h5 class="mb-1"><a class="post-title" href="author-single.html">Charls Xaviar</a></h5>
-                <span>Author &amp; developer of Bexer, Biztrox theme</span>
-                <small><a href="#" class="follow">Follow</a></small>
-            </div>
+            {% endfor %}
         </div>
-        <div class="media align-items-center">
-            <div class="mr-3">
-                <img class="widget-author-image" src="images/kate-stone.jpg">
-            </div>
-            <div class="media-body">
-                <h5 class="mb-1"><a class="post-title" href="author-single.html">Kate Stone</a></h5>
-                <span>Author &amp; developer of Bexer, Biztrox theme</span>
-                <small><a href="#" class="follow">Follow</a></small>
-            </div>
-        </div>
-        <div class="media align-items-center">
-            <div class="mr-3">
-                <img class="widget-author-image" src="images/john-doe.jpg" alt="John Doe">
-            </div>
-            <div class="media-body">
-                <h5 class="mb-1"><a class="post-title" href="author-single.html">John Doe</a></h5>
-                <span>Author &amp; developer of Bexer, Biztrox theme</span>
-                <small><a href="#" class="follow">Follow</a></small>
-            </div>
-        </div>
-    </div>
-    <!-- Search -->
+        <!-- Search -->
 
     <div class="widget">
         <h4 class="widget-title"><span>Never Miss A News</span></h4>

@@ -1,0 +1,129 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- mobile responsive meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="This is meta description">
+    <meta name="author" content="Abinandh MJ">
+
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="{% static 'login/img/favicon.webp' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'login/img/favicon.webp' %}" type="image/x-icon">
+
+
+    <!-- Page Title -->
+    <title>DevDiaries - Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'login/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'login/css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    </div>
+                                    <form class="user" method="POST" action="{% url 'login' %}">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="username_or_email">Username or Email</label>
+                                            <input type="text" class="form-control form-control-user" id="username_or_email" name="username" placeholder="Enter your username or email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-user btn-block">Login</button>
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                                <div class="alert alert-danger" role="alert">
+                                                    {{ message }}
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </form>
+                            <button href="#" class="btn btn-google btn-user btn-block">
+                                <i class="fab fa-google fa-fw"></i> Login with Google
+                            </button>
+                            <button href="#" class="btn btn-facebook btn-user btn-block">
+                                <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                            </button>
+                            
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="{% url 'forgotpassword' %}">Forgot Password?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="{% url 'register' %}">Create an Account!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'login/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'login/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'login/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'login/js/sb-admin-2.min.js' %}"></script>
+
+    <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#exampleInputPassword");
+
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+
+            // toggle the button text
+            this.textContent = type === "password" ? "Show Password" : "Hide Password";
+        });
+    </script>
+
+
+</body>
+
+</html>
