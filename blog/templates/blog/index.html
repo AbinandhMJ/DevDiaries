@@ -14,12 +14,9 @@
                     </li>
                     {% endfor %}
                 </ul>
-
-
             </div>
         </div>
     </div>
-
 
     <svg class="banner-shape-1" width="39" height="40" viewBox="0 0 39 40" fill="none"
         xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +50,6 @@
         </defs>
     </svg>
 
-
     <svg class="banner-shape-3" width="39" height="40" viewBox="0 0 39 40" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <path d="M0.965848 20.6397L0.943848 38.3906L18.6947 38.4126L18.7167 20.6617L0.965848 20.6397Z" stroke="#040306"
@@ -62,7 +58,6 @@
         <path d="M20.0078 1.62949L19.9858 19.3804L37.7367 19.4024L37.7587 1.65149L20.0078 1.62949Z" stroke="#040306"
             stroke-miterlimit="10" />
     </svg>
-
 
     <svg class="banner-border" height="240" viewBox="0 0 2202 240" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -74,108 +69,96 @@
 <section class="section pb-0">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 mb-5">
-                <h2 class="h5 section-title">Editors Pick</h2>
+            <div class="col-lg-4 mb-5"><h2 class="h5 section-title">Editors Pick</h2>
+                {% if editors_pick %}
                 <article class="card">
                     <div class="post-slider slider-sm">
-                        <img src="images/post/post-1.jpg" class="card-img-top" alt="post-thumb">
+                        <img src="{{ editors_pick.image.url }}" class="card-img-top" alt="{{ editors_pick.title }}">
                     </div>
-
+                
                     <div class="card-body">
-                        <h3 class="h4 mb-3"><a class="post-title" href="post-details.html">Use apples to give your bakes
-                                caramel and a moist texture</a></h3>
+                        <h3 class="h4 mb-3"><a class="post-title" href="{% url 'post_detail' slug=editors_pick.slug %}">{{ editors_pick.title }}</a></h3>
                         <ul class="card-meta list-inline">
                             <li class="list-inline-item">
                                 <a href="#" class="card-meta-author">
-                                    <img src="images/john-doe.jpg">
-                                    <span>Charls Xaviar</span>
+                                    <img src="{{ editors_pick.author.profile.image.url }}" alt="{{ editors_pick.author.username }}">
+                                    <span>{{ editors_pick.author.username }}</span>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <i class="ti-timer"></i>2 Min To Read
+                                <i class="ti-timer"></i>{{ editors_pick.reading_time }} Min To Read
                             </li>
                             <li class="list-inline-item">
-                                <i class="ti-calendar"></i>14 jan, 2020
+                                <i class="ti-calendar"></i>{{ editors_pick.created_at|date:"j M, Y" }}
                             </li>
                             <li class="list-inline-item">
                                 <ul class="card-meta-tag list-inline">
-                                    <li class="list-inline-item"><a href="tags.html">Color</a></li>
-                                    <li class="list-inline-item"><a href="tags.html">Recipe</a></li>
-                                    <li class="list-inline-item"><a href="tags.html">Fish</a></li>
+                                    {% for tag in editors_pick.tags.all %}
+                                    <li class="list-inline-item">
+                                        <a href="{% url 'tag_detail' tag_name=tag.name %}">{{ tag.name }}</a>
+                                    </li>
+                                    {% endfor %}
                                 </ul>
                             </li>
                         </ul>
-                        <p>It’s no secret that the digital industry is booming. From exciting startups to …</p>
-                        <a href="post-details.html" class="btn btn-outline-primary">Read More</a>
+                        <p>{{ editors_pick.short_description }}</p>
+                        <ul class="card-meta-tag list-inline">
+                            <li class="list-inline-item">
+                                <i class="ti-thumb-up"></i> {{ editors_pick.likes }} Likes
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="ti-thumb-down"></i> {{ editors_pick.dislikes }} Dislikes
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="ti-share"></i>
+                                <a href="#" class="share-button" onclick="sharePost('{{ editors_pick.get_absolute_url }}')">Share</a>
+                            </li>
+                        </ul>
+                        <a href="{% url 'post_detail' slug=editors_pick.slug %}" class="btn btn-outline-primary">Read More</a>
                     </div>
                 </article>
+                {% else %}
+                <p>No posts available</p>
+                {% endif %}
+                
             </div>
             <div class="col-lg-4 mb-5">
                 <h2 class="h5 section-title">Trending Post</h2>
 
-                <article class="card mb-4">
-                    <div class="card-body d-flex">
-                        <img class="card-img-sm" src="images/post/post-3.jpg">
+                {% if trending_posts %}
+                  {% for post in trending_posts %}
+                    <article class="card mb-4">
+                      <div class="card-body d-flex">
+                        <img class="card-img-sm" src="{{ post.image.url }}" alt="{{ post.title }}">
                         <div class="ml-3">
-                            <h4><a href="post-details.html" class="post-title">Advice From a Twenty Something</a></h4>
-                            <ul class="card-meta list-inline mb-0">
-                                <li class="list-inline-item mb-0">
-                                    <i class="ti-calendar"></i>14 jan, 2020
-                                </li>
-                                <li class="list-inline-item mb-0">
-                                    <i class="ti-timer"></i>2 Min To Read
-                                </li>
-                            </ul>
+                          <h4><a href="{% url 'post_detail' slug=post.slug %}" class="post-title">{{ post.title }}</a></h4>
+                          <ul class="card-meta list-inline mb-0">
+                            <li class="list-inline-item mb-0">
+                              <i class="ti-calendar"></i>{{ post.created_at|date:"j M, Y" }}
+                            </li>
+                            <li class="list-inline-item mb-0">
+                              <i class="ti-timer"></i>{{ post.reading_time }} Min To Read
+                            </li>
+                          </ul>
                         </div>
-                    </div>
-                </article>
-
-                <article class="card mb-4">
-                    <div class="card-body d-flex">
-                        <img class="card-img-sm" src="images/post/post-2.jpg">
-                        <div class="ml-3">
-                            <h4><a href="post-details.html" class="post-title">The Design Files - Homes Minimalist</a>
-                            </h4>
-                            <ul class="card-meta list-inline mb-0">
-                                <li class="list-inline-item mb-0">
-                                    <i class="ti-calendar"></i>14 jan, 2020
-                                </li>
-                                <li class="list-inline-item mb-0">
-                                    <i class="ti-timer"></i>2 Min To Read
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card mb-4">
-                    <div class="card-body d-flex">
-                        <img class="card-img-sm" src="images/post/post-4.jpg">
-                        <div class="ml-3">
-                            <h4><a href="post-details.html" class="post-title">The Skinny Confidential</a></h4>
-                            <ul class="card-meta list-inline mb-0">
-                                <li class="list-inline-item mb-0">
-                                    <i class="ti-calendar"></i>14 jan, 2020
-                                </li>
-                                <li class="list-inline-item mb-0">
-                                    <i class="ti-timer"></i>2 Min To Read
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
+                      </div>
+                    </article>
+                  {% endfor %}
+                {% else %}
+                  <p>No trending posts available</p>
+                {% endif %}
+                
             </div>
 
             <div class="col-lg-4 mb-5">
                 <h2 class="h5 section-title">Popular Post</h2>
-
+                {% if popular_post %}
                 <article class="card">
                     <div class="post-slider slider-sm">
-                        <img src="images/post/post-5.jpg" class="card-img-top" alt="post-thumb">
+                        <img src="{{ popular_post.image.url }}" class="card-img-top" alt="{{ popular_post.title }}">
                     </div>
                     <div class="card-body">
-                        <h3 class="h4 mb-3"><a class="post-title" href="post-details.html">How To Make Cupcakes and
-                                Cashmere Recipe At Home</a></h3>
+                        <h3 class="h4 mb-3"><a class="post-title" href="{% url 'post_detail' slug=popular_post.slug %}">{{ popular_post.title }}</a></h3>
                         <ul class="card-meta list-inline">
                             <li class="list-inline-item">
                                 <a href="author-single.html" class="card-meta-author">
@@ -184,23 +167,41 @@
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <i class="ti-timer"></i>2 Min To Read
+                                <i class="ti-timer"></i>{{ popular_post.reading_time }} Min To Read
                             </li>
                             <li class="list-inline-item">
-                                <i class="ti-calendar"></i>14 jan, 2020
+                                <i class="ti-calendar"></i>{{ popular_post.created_at|date:"j M, Y" }}
                             </li>
                             <li class="list-inline-item">
                                 <ul class="card-meta-tag list-inline">
-                                    <li class="list-inline-item"><a href="tags.html">City</a></li>
-                                    <li class="list-inline-item"><a href="tags.html">Food</a></li>
-                                    <li class="list-inline-item"><a href="tags.html">Taste</a></li>
+                                    {% for tag in popular_post.tags.all %}
+                                    <li class="list-inline-item">
+                                        <a href="{% url 'tag_detail' tag_name=tag.name %}">{{ tag.name }}</a>
+                                    </li>
+                                    {% endfor %}
                                 </ul>
                             </li>
                         </ul>
-                        <p>It’s no secret that the digital industry is booming. From exciting startups to …</p>
-                        <a href="post-details.html" class="btn btn-outline-primary">Read More</a>
+                        <p>{{ popular_post.short_description|truncatechars:120 }}</p>
+                        <ul class="card-meta-tag list-inline">
+                            <li class="list-inline-item">
+                                <i class="ti-thumb-up"></i> {{ popular_post.likes }} Likes
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="ti-thumb-down"></i> {{ popular_post.dislikes }} Dislikes
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="ti-share"></i>
+                                <a href="#" class="share-button" onclick="sharePost('{{ popular_post.get_absolute_url }}')">Share</a>
+                            </li>
+                        </ul>
+                        <a href="{% url 'post_detail' slug=popular_post.slug %}" class="btn btn-outline-primary">Read More</a>
                     </div>
                 </article>
+                {% else %}
+                <p>No popular posts available</p>
+                {% endif %}
+
             </div>
             <div class="col-12">
                 <div class="border-bottom border-default"></div>
@@ -226,7 +227,7 @@
                                     style="height: 200px; object-fit: cover;">
                                 {% else %}
                                 <!-- Default image if post has no image -->
-                                <img src="{% static './post_images/altumcode-oZ61KFUQsus-unsplash.jpg' %}"
+                                <img src="{% static 'media/post_images/11062023110801_64412_2_.jpg' %}"
                                     class="card-img" alt="Default Image" style="height: 200px; object-fit: cover;">
                                 {% endif %}
                             </div>
@@ -242,7 +243,7 @@
                                         <img src="{{ post.author.profile.image.url }}" alt="{{ post.author.username }}">
                                         <!-- Randomly select an avatar from static/images/user_avatars -->
                                         {% else %}
-                                        <img src="{% static 'images/user_avatars/'|add:post.author.pk|add:" .jpg" %}"
+                                        <img src="{% static 'images/user_avatars/beardo.jpg' %}"
                                             alt="{{ post.author.username }}">
                                         {% endif %}
                                         <span>{{ post.author.username }}</span>
@@ -265,27 +266,25 @@
                                 </li>
                             </ul>
                             <p>{{ post.short_description }}</p>
+                            <ul class="card-meta-tag list-inline">
+                                <li class="list-inline-item">
+                                    <i class="ti-thumb-up"></i> {{ post.likes }} Likes
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="ti-thumb-down"></i> {{ post.dislikes }} Dislikes
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="ti-share"></i> 
+                                    <!-- Call the sharePost() function when the button is clicked -->
+                                    <a href="#" class="share-button" onclick="sharePost('{{ post.get_absolute_url }}')">Share</a>
+                                </li>
+                            </ul>
                             <a href="{% url 'post_detail' slug=post.slug %}" class="btn btn-outline-primary">Read
                                 More</a>
                         </div>
                     </div>
                 </article>
                 {% endfor %}
-
-
-
-
-                <ul class="pagination justify-content-center">
-                    <li class="page-item page-item active ">
-                        <a href="#!" class="page-link">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#!" class="page-link">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#!" class="page-link">&raquo;</a>
-                    </li>
-                </ul>
             </div>
             <!-- Sidebar Area -->
 
@@ -293,3 +292,15 @@
             <!-- Sidebar Area End-->
 
             {% endblock %}
+            <!-- Modify your Django template to include a JavaScript function -->
+<script>
+    function sharePost(postUrl) {
+        // Open a share dialog with the post's URL
+        navigator.share({
+            title: 'Check out this post',
+            url: postUrl
+        })
+        .then(() => console.log('Shared successfully'))
+        .catch(error => console.error('Error sharing:', error));
+    }
+</script>

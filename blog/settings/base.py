@@ -112,3 +112,15 @@ STATIC_URL = "/static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # STATICFILES_DIRS = [BASE_DIR / "static"]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# settings.py
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 1025  # Replace with your SMTP server port (587 is typically used for TLS)
+# EMAIL_USE_TLS = True  # Set to True if your SMTP server uses TLS/SSL
+# EMAIL_HOST_USER = 'courtfinder277@gmail.com'  # Replace with your SMTP username
+# EMAIL_HOST_PASSWORD = 'Courtfinder@1234'  # Replace with your SMTP password
