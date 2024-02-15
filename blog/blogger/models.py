@@ -42,7 +42,6 @@ class Post(models.Model):
 
     title = models.CharField(max_length=250)
     subtitle = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=250, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="post_author")
     content = models.TextField()
     short_description = models.TextField(blank=True)
@@ -54,8 +53,11 @@ class Post(models.Model):
     status = models.CharField(max_length=10, choices=options, default="draft")
     views = models.PositiveIntegerField(default=0)
     likes = models.PositiveIntegerField(default=0)
+    dislikes = models.PositiveIntegerField(default=0)
+    shares = models.PositiveIntegerField(default=0)
     comments = models.ManyToManyField("Comment", related_name="post_comments", blank=True)
-    reading_time = models.PositiveIntegerField(default=0)  # Added for reading time
+    reading_time = models.PositiveIntegerField(default=0)
+    slug = models.SlugField(max_length=250, unique=True, blank=True)
 
     class Meta:
         ordering = ("-created_at",)
@@ -64,6 +66,10 @@ class Post(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
+        # Automatically generate the slug from the title if it's not provided
+        if not self.slug:
+            self.slug = slugify(self.title)[:250]  # Limit slug length to 250 characters
+
         # If no image is provided, fetch an image from Pexels API
         if not self.image:
             self.fetch_image_from_pexels()
@@ -76,10 +82,10 @@ class Post(models.Model):
         if not self.reading_time:
             self.reading_time = self.calculate_reading_time()
 
-        if not self.tags.exists():
-            self.extract_tags_from_content()
+        super().save(*args, **kwargs)  # Save the instance first
 
-        super().save(*args, **kwargs)
+        if not self.tags.exists():  # Now you can safely access tags
+            self.extract_tags_from_content()
 
     def fetch_image_from_pexels(self):
         # Fetch image from Pexels API based on keywords extracted from the post title
@@ -134,6 +140,18 @@ class Post(models.Model):
         words = re.findall(r'\b\w+\b', self.title)
         sorted_keywords = sorted(words, key=len, reverse=True)
         return sorted_keywords
+
+    def add_like(self):
+        self.likes += 1
+        self.save()
+
+    def add_dislike(self):
+        self.dislikes += 1
+        self.save()
+
+    def add_share(self):
+        self.shares += 1
+        self.save()
 
 # Signal to update reading_time before saving
 @receiver(pre_save, sender=Post)

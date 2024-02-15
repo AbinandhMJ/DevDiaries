@@ -47,8 +47,12 @@
     {% include 'base/navbar.html' %}
     {% block template%}
 
-    {% endblock %}
+    <!-- Pagination controls -->
+    {% include 'general/pagination.html' %}
+    
     <button onclick="topFunction()" id="backtotop" title="back2top">Top</button>
+    {% endblock %}
+ 
     <!-- /Back to top -->
     {% include 'base/footer.html' %}
 

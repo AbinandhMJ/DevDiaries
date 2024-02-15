@@ -20,7 +20,7 @@
                         <li class="list-inline-item">
                             <a href="#" class="card-meta-author">
                                 {% if post.author.profile.image %}
-                                <img src="{{ post.author.profile.image.url }}" alt="{{ post.author.username }}">
+                                <img src="{% static 'images/user_avatars/beardo.jpg' %}" alt="{{ post.author.username }}">
                                 {% else %}
                                 <!-- Default avatar or username -->
                                 <span>{{ post.author.username }}</span>
@@ -41,6 +41,19 @@
                             </ul>
                         </li>
                     </ul>
+                    <ul class="card-meta-tag list-inline">
+                        <li class="list-inline-item">
+                            <i class="ti-thumb-up"></i> {{ post.likes }} Likes
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="ti-thumb-down"></i> {{ post.dislikes }} Dislikes
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="ti-share"></i> 
+                            <a href="#" class="share-button" onclick="sharePost('{{ post.get_absolute_url }}')">Share</a>
+                        </li>
+                    </ul>
+                  
                     <div class="content">
                         <p>{{ post.content }}</p>
                     </div>

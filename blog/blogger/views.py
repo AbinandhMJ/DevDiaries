@@ -1,14 +1,46 @@
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import ListView, DetailView
 from .models import Post, Category, Comment, Tag
-from django.db.models import Count, Q
-from django.http import HttpResponse, Http404
-from .forms import CustomUserCreationForm, LoginForm
+from django.db.models import Count, Q, F
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from .forms import CustomUserCreationForm, LoginForm, ContactForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm  
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+
+def aboutus(request):
+    return render(request, 'general/aboutus.html')
+
+def contactus(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Get form data
+            name = form.cleaned_data.get('name')
+            email = form.cleaned_data.get('email')
+            reason = form.cleaned_data.get('reason', '')  # Assuming 'reason' is an optional field
+            message = form.cleaned_data.get('message')
+
+            # Construct email message
+            subject = f"New message from {name}"
+            body = f"From: {name}\nEmail: {email}\nReason: {reason}\n\nMessage: {message}"
+            from_email = 'courtfinder277@gmail.com'  # Replace with your email address
+            to_email = 'abinandhmurukesan@gmail.com'  # Recipient email address
+
+            # Send email
+            send_mail(subject, body, from_email, [to_email])
+
+            # Redirect with success message
+            return HttpResponseRedirect(request.path_info + '?submitted=True')
+    else:
+        form = ContactForm()
+
+    form_submitted = request.GET.get('submitted', False)
+    return render(request, 'general/contactus.html', {'form': form, 'form_submitted': form_submitted})
 
 def custom_404_view(request, exception):
     return render(request, '404.html', status=404)
@@ -53,7 +85,7 @@ def user_login(request):
     else:
         form = AuthenticationForm()
     return render(request, 'authentication/login.html', {'form': form})  
-      
+
 def dashboard(request):
     return render(request, 'dashboard/index.html')
 
@@ -64,6 +96,7 @@ class HomeView(ListView):
     model = Post
     template_name = "blog/index.html"
     context_object_name = "posts"
+    paginate_by = 10  # Number of posts per page
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -72,7 +105,37 @@ class HomeView(ListView):
         context['tags'] = Tag.objects.annotate(num_posts=Count('posts')).order_by('-num_posts')[:15]
         context['post_titles'] = [post.title for post in context['posts']]
         context['recent_posts'] = Post.objects.order_by('-created_at')[:3]
+        context['trending_posts'] = Post.objects.order_by('-views')[:3] 
+        context['popular_post'] = Post.objects.order_by('-views', '-likes',).first()
+
+        # Retrieve the latest post
+        latest_post = Post.objects.first()
+
+        # Retrieve a post related to cybersecurity or AI
+        cybersecurity_posts = Post.objects.filter(tags__name__in=['cybersecurity', 'AI']).order_by('?').first()
+
+        # Check if the latest post is the same as the cybersecurity or AI post
+        if cybersecurity_posts and latest_post == cybersecurity_posts:
+            cybersecurity_posts = None
+
+        # Determine the post to display as the "Editors Pick"
+        editors_pick = latest_post if latest_post else cybersecurity_posts
+
+        context['editors_pick'] = editors_pick
+
         return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        paginator = Paginator(queryset, self.paginate_by)
+        page = self.request.GET.get('page')
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
+        return posts
 
 class PostDetailView(DetailView):
     model = Post
@@ -101,6 +164,7 @@ def category_detail(request, category_name):
     category = get_object_or_404(Category, name=category_name)
     # Add any additional logic here if needed
     return render(request, 'blog/tags&cat.html', {'category': category})
+
 def view_all_categories(request):
     categories = Category.objects.all()
     return render(request, 'blog/tags&cat.html', {'categories': categories})

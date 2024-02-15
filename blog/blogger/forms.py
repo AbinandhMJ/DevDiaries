@@ -31,3 +31,9 @@ class LoginForm(forms.Form):
             'username': forms.TextInput(attrs={'placeholder': 'Username'}),
             'password': forms.PasswordInput(attrs={'placeholder': 'Password'}),
         }
+
+class ContactForm(forms.Form):
+    name = forms.CharField(label='Your Name', max_length=100)
+    email = forms.EmailField(label='Your Email')
+    reason = forms.CharField(label='Reason for Contact', required=False)
+    message = forms.CharField(label='Your Message', widget=forms.Textarea)
