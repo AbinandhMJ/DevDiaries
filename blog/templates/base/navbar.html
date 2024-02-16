@@ -16,17 +16,9 @@
                         <a class="nav-link" href="{% url "aboutus" %}">About us</a>
 
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Tags & Categories
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'view_all_categories' %}">Categories</a>
-                            <a class="dropdown-item" href="{% url 'tag_detail' tag_name='default_tag' %}">Tags</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "create_blog" %}"><i class="ti-write"></i> Write</a>
                     </li>
-                     
-
                     <li class="nav-item">
                         <a class="nav-link" href="{% url "contactus" %}">Contact Us</a>
                     </li>

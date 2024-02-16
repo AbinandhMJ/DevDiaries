@@ -6,6 +6,8 @@ from django.core.files.base import ContentFile
 from django.utils.text import slugify
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+from django.utils.translation import gettext_lazy as _
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Comment(models.Model):
     author = models.CharField(max_length=60)
@@ -43,7 +45,8 @@ class Post(models.Model):
     title = models.CharField(max_length=250)
     subtitle = models.CharField(max_length=100)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="post_author")
-    content = models.TextField()
+    # content = models.TextField()
+    content = RichTextUploadingField()
     short_description = models.TextField(blank=True)
     image = models.ImageField(upload_to="post_images/", blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)

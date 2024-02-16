@@ -8,7 +8,7 @@ from .views import (
     register,
     user_login,
     dashboard,
-    forgotpassword, logout_view, aboutus, contactus
+    forgotpassword, logout_view, aboutus, contactus, create_blog
 )
 
 
@@ -25,4 +25,5 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('aboutus/', aboutus, name='aboutus'),
     path('contactus/', contactus, name='contactus'),
+    path('create/', create_blog, name='create_blog'), 
 ]

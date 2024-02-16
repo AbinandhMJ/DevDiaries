@@ -81,8 +81,14 @@
                         <ul class="card-meta list-inline">
                             <li class="list-inline-item">
                                 <a href="#" class="card-meta-author">
-                                    <img src="{{ editors_pick.author.profile.image.url }}" alt="{{ editors_pick.author.username }}">
-                                    <span>{{ editors_pick.author.username }}</span>
+                                    {% if post.author.profile.image %}
+                                    <img src="{{ post.author.profile.image.url }}" alt="{{ post.author.username }}">
+                                    <!-- Randomly select an avatar from static/images/user_avatars -->
+                                    {% else %}
+                                    <img src="{% static 'images/user_avatars/beardo.jpg' %}"
+                                        alt="{{ post.author.username }}">
+                                    {% endif %}
+                                    <span>{{ post.author.username }}</span>
                                 </a>
                             </li>
                             <li class="list-inline-item">
@@ -162,8 +168,14 @@
                         <ul class="card-meta list-inline">
                             <li class="list-inline-item">
                                 <a href="author-single.html" class="card-meta-author">
-                                    <img src="images/kate-stone.jpg" alt="Kate Stone">
-                                    <span>Kate Stone</span>
+                                    {% if post.author.profile.image %}
+                                    <img src="{{ post.author.profile.image.url }}" alt="{{ post.author.username }}">
+                                    <!-- Randomly select an avatar from static/images/user_avatars -->
+                                    {% else %}
+                                    <img src="{% static 'images/user_avatars/beardo.jpg' %}"
+                                        alt="{{ post.author.username }}">
+                                    {% endif %}
+                                    <span>{{ post.author.username }}</span>
                                 </a>
                             </li>
                             <li class="list-inline-item">

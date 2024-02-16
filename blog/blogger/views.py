@@ -5,12 +5,34 @@ from django.views.generic import ListView, DetailView
 from .models import Post, Category, Comment, Tag
 from django.db.models import Count, Q, F
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from .forms import CustomUserCreationForm, LoginForm, ContactForm
+from .forms import CustomUserCreationForm, LoginForm, ContactForm, CreateBlogForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm  
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
+from django.utils.text import slugify
+from django.utils.timezone import now
 
+@login_required
+def create_blog(request):
+    if request.method == 'POST':
+        form = CreateBlogForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            
+            # Generate a unique slug
+            base_slug = slugify(post.title)
+            timestamp = now().strftime("%Y%m%d%H%M%S")
+            post.slug = f"{base_slug}-{timestamp}"
+
+            post.save()
+            return redirect('post_detail', slug=post.slug)
+    else:
+        form = CreateBlogForm()
+        
+    return render(request, 'blog/createblog.html', {'form': form})
 
 def aboutus(request):
     return render(request, 'general/aboutus.html')
@@ -152,13 +174,18 @@ class PostDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['tags'] = self.object.tags.all()  # Retrieve tags associated with the post
         return context
-
 def tag_detail(request, tag_name):
+    if tag_name == 'default_tag':
+        # Handle default_tag separately
+        # Add your logic here for handling default_tag
+        return render(request, 'blog/tags&cat.html')
+    
     # Retrieve the tag object based on the tag name
     tag = get_object_or_404(Tag, name=tag_name)
 
     # Assuming you have a template named 'tag_detail.html'
     return render(request, 'blog/tags&cat.html', {'tag': tag})
+
 
 def category_detail(request, category_name):
     category = get_object_or_404(Category, name=category_name)

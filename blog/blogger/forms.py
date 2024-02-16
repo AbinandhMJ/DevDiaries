@@ -1,6 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Post, Category, Tag
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from ckeditor.widgets import CKEditorWidget
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(label="Email", max_length=254)
@@ -37,3 +40,18 @@ class ContactForm(forms.Form):
     email = forms.EmailField(label='Your Email')
     reason = forms.CharField(label='Reason for Contact', required=False)
     message = forms.CharField(label='Your Message', widget=forms.Textarea)
+    
+class CreateBlogForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorWidget())
+    class Meta:
+        model = Post
+        fields = ['title', 'subtitle', 'content', 'image', 'categories', 'tags']
+        widgets = {
+            'title': forms.TextInput(attrs={'placeholder': 'Title'}),
+            'subtitle': forms.TextInput(attrs={'placeholder': 'Subtitle'}),
+            'image': forms.FileInput(attrs={'placeholder': 'Upload your image'}),
+            # 'content': forms.Textarea(attrs={'placeholder': 'Content'}),
+            'content': CKEditorUploadingWidget(),
+            'categories': forms.CheckboxSelectMultiple(),
+            'tags': forms.CheckboxSelectMultiple(),
+        }

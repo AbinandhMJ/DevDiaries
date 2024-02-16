@@ -1,4 +1,9 @@
 {% load static %}
+
+{% block extrahead %}
+<script>window.CKEDITOR_BASEPATH = '/staticfiles/ckeditor/ckeditor/';</script>
+{{ block.super }}
+{% endblock %}
 <!doctype html>
 <html lang="en">
 
@@ -76,6 +81,10 @@
 
     <!-- Main Script -->
     <script src="{% static 'js/script.js' %}"></script>
+
+    <!-- CEK Editor-->
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 
     <!-- toast_notifications.html -->
 <script>
